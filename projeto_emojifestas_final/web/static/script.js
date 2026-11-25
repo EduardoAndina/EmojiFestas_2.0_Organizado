@@ -131,7 +131,7 @@ function hallCard(h) {
   return `
     <div class="hall-card">
       <div class="hall-card-top">
-        <div class="hall-symbol">🏰</div>
+        <div class="hall-symbol">✦</div>
         <div>
           <strong>${escapeHTML(h.nome)}</strong>
           <span class="hall-badge">Até ${h.capacidade} convidados · Acréscimo: ${money(h.acrescimo)}</span>

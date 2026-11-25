@@ -3,40 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#5b2be0">
+  <meta name="theme-color" content="#facc15">
   <title>EmojiFestas | Gestão de Eventos e Espaços</title>
+  <link rel="icon" type="image/jpeg" href="/static/img/logo-emojifestas.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <!-- TELA DE LOGIN / BOAS-VINDAS -->
+
   <div class="login-screen" id="loginScreen">
     <div class="login-hero">
       <div class="login-brand">
-        <span class="brand-badge">🎉</span>
+        <img src="/static/img/logo-emoji-festas.jpg" alt="Logo Emoji Festas" class="hero-logo-img">
         <div>
-          <strong>EmojiFestas</strong>
-          <small>SÃO LEOPOLDO • GESTÃO DE EVENTOS</small>
+          <strong>EMOJI FESTAS</strong>
+          <small>SÃO LEOPOLDO • ESPAÇOS &amp; EVENTOS</small>
         </div>
       </div>
-      <span class="hero-pill">✨ Gestão simples. Festas inesquecíveis.</span>
-      <h1>Tudo para cada festa acontecer sem imprevistos.</h1>
-      <p>Controle integrado dos 3 espaços exclusivos do EmojiFestas, calendário anti-duplicação em tempo real, pacotes, extras e financeiro.</p>
+
+      <span class="hero-pill">✦ Identidade Emoji Festas • Celebre com estilo</span>
+      <h1>Tudo para a sua festa acontecer sem imprevistos.</h1>
+      <p>Gerencie os 3 espaços exclusivos do Emoji Festas, consulte a disponibilidade em calendário sem duplicação, monte combos e extras e controle pagamentos.</p>
+
       <div class="hero-chips">
-        <span>🏰 3 espaços integrados</span>
-        <span>📅 Agenda sem conflitos</span>
-        <span>💳 Controle de sinal e quitação</span>
+        <span>✦ 3 espaços exclusivos</span>
+        <span>✦ Agenda sem conflitos</span>
+        <span>✦ Financeiro organizado</span>
       </div>
-      <footer class="hero-footer">Sistema desenvolvido em Python + POO + SQLite</footer>
+
+      <footer class="hero-footer">Emoji Festas • Sistema POO + SQLite</footer>
     </div>
 
     <div class="login-box-wrap">
       <form class="login-card" id="loginForm">
-        <p class="eyebrow">BEM-VINDO(A) DE VOLTA</p>
-        <h2>Acesse sua conta</h2>
-        <p class="muted">Entre com suas credenciais para gerenciar os eventos.</p>
+        <div class="login-logo-center">
+          <img src="/static/img/logo-emojifestas.jpg" alt="Logo Emoji Festas" class="login-logo-img">
+        </div>
+        <p class="eyebrow center-text">ACESSO AO SISTEMA</p>
+        <h2 class="center-text">Entrar no Emoji Festas</h2>
+        <p class="muted center-text">Use seu usuário e senha para acessar o painel.</p>
 
         <div class="form-field">
           <label for="loginUser">Usuário</label>
@@ -47,13 +54,13 @@
           <input class="form-control" id="loginPass" name="senha" type="password" placeholder="••••" required autocomplete="current-password">
         </div>
 
-        <button class="primary-button full-btn" type="submit">Entrar no painel</button>
+        <button class="primary-button full-btn" type="submit">Entrar no sistema</button>
 
         <div class="quick-demo-login">
           <span>Acesso rápido para demonstração:</span>
           <div class="demo-btns">
-            <button type="button" class="chip-btn" data-user="marina" data-pass="1234">👑 Marina (Proprietária)</button>
-            <button type="button" class="chip-btn" data-user="lucas" data-pass="1234">🎧 Lucas (Atendente)</button>
+            <button type="button" class="chip-btn" data-user="marina" data-pass="1234">Marina (Proprietária)</button>
+            <button type="button" class="chip-btn" data-user="lucas" data-pass="1234">Lucas (Atendente)</button>
           </div>
         </div>
       </form>
@@ -64,19 +71,19 @@
   <div class="app-shell hidden" id="appShell">
     <aside class="sidebar" id="sidebar">
       <a class="brand" href="#" data-page="dashboard">
-        <span class="brand-mark">🎉</span>
-        <span><strong>EmojiFestas</strong><small>GESTÃO DE EVENTOS</small></span>
+        <img src="/static/img/logo-emojifestas.jpg" alt="Logo Emoji Festas" class="sidebar-logo-img">
+        <span><strong>EMOJI FESTAS</strong><small>GESTÃO DE EVENTOS</small></span>
       </a>
 
       <div class="nav-caption">MENU PRINCIPAL</div>
       <nav class="nav-menu">
-        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">📊</span>Dashboard</button>
-        <button class="nav-link" data-page="agendamentos"><span class="nav-icon">📅</span>Agendamentos</button>
-        <button class="nav-link" data-page="calendario"><span class="nav-icon">🗓️</span>Calendário por Espaço</button>
-        <button class="nav-link" data-page="clientes"><span class="nav-icon">👥</span>Clientes</button>
-        <button class="nav-link" data-page="saloes"><span class="nav-icon">🏰</span>Espaços e Combos</button>
-        <button class="nav-link" data-page="pagamentos"><span class="nav-icon">💰</span>Pagamentos</button>
-        <button class="nav-link" data-page="relatorios"><span class="nav-icon">📈</span>Relatórios</button>
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">▦</span>Dashboard</button>
+        <button class="nav-link" data-page="agendamentos"><span class="nav-icon">▣</span>Agendamentos</button>
+        <button class="nav-link" data-page="calendario"><span class="nav-icon">◫</span>Calendário por Espaço</button>
+        <button class="nav-link" data-page="clientes"><span class="nav-icon">♙</span>Clientes</button>
+        <button class="nav-link" data-page="saloes"><span class="nav-icon">⌂</span>Espaços e Combos</button>
+        <button class="nav-link" data-page="pagamentos"><span class="nav-icon">▤</span>Pagamentos</button>
+        <button class="nav-link" data-page="relatorios"><span class="nav-icon">▥</span>Relatórios</button>
       </nav>
 
       <div class="sidebar-bottom">
@@ -94,9 +101,13 @@
     <main class="main-area">
       <header class="topbar">
         <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
-        <div class="breadcrumb"><span>EmojiFestas</span><b>/</b><strong id="breadcrumbCurrent">Dashboard</strong></div>
+        <div class="breadcrumb">
+          <span class="brand-crumb"><img src="/static/img/logo-emojifestas.jpg" alt="" class="crumb-logo"> Emoji Festas</span>
+          <b>/</b>
+          <strong id="breadcrumbCurrent">Dashboard</strong>
+        </div>
         <div class="top-actions">
-          <span class="system-status"><i></i> SQLite conectado</span>
+          <span class="system-status"><i></i> Sistema online</span>
           <button class="icon-button" id="refreshButton" title="Atualizar dados">↻</button>
           <button class="primary-button" id="quickNewBooking">＋ Novo agendamento</button>
         </div>
@@ -108,16 +119,16 @@
           <div class="page-heading">
             <div>
               <p class="eyebrow">VISÃO GERAL</p>
-              <h1>Olá, <span id="welcomeName">Marina</span>! 🎉</h1>
+              <h1>Olá, <span id="welcomeName">Marina</span>!</h1>
               <p class="muted">Acompanhe a agenda dos 3 espaços e o financeiro em um só lugar.</p>
             </div>
             <div class="date-chip" id="todayLabel"></div>
           </div>
 
           <div class="stats-grid">
-            <article class="stat-card accent-purple"><div class="stat-top"><span>Festas agendadas</span><span class="stat-icon purple">📅</span></div><strong id="statBookings">—</strong><small>Eventos confirmados</small></article>
-            <article class="stat-card accent-blue"><div class="stat-top"><span>Clientes cadastrados</span><span class="stat-icon blue">👥</span></div><strong id="statClients">—</strong><small>Base ativa de contratantes</small></article>
-            <article class="stat-card accent-orange"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon orange">R$</span></div><strong id="statRevenue">—</strong><small>Total em eventos</small></article>
+            <article class="stat-card accent-yellow"><div class="stat-top"><span>Festas agendadas</span><span class="stat-icon yellow">▣</span></div><strong id="statBookings">—</strong><small>Eventos confirmados</small></article>
+            <article class="stat-card accent-ink"><div class="stat-top"><span>Clientes cadastrados</span><span class="stat-icon ink-badge">♙</span></div><strong id="statClients">—</strong><small>Base ativa de contratantes</small></article>
+            <article class="stat-card accent-amber"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon amber">R$</span></div><strong id="statRevenue">—</strong><small>Total em eventos</small></article>
             <article class="stat-card accent-green"><div class="stat-top"><span>Recebido até agora</span><span class="stat-icon green">✓</span></div><strong id="statReceived">—</strong><small>Sinais e parcelas pagas</small></article>
           </div>
 
@@ -135,7 +146,7 @@
           </div>
 
           <article class="panel hall-overview">
-            <div class="panel-heading"><div><h2>Nossos 3 Espaços Exclusivos</h2><p>Estrutura, capacidade e diferenciais do EmojiFestas</p></div><button class="text-button" data-goto="saloes">Ver detalhes →</button></div>
+            <div class="panel-heading"><div><h2>Espaços Emoji Festas</h2><p>Estrutura, capacidade e diferenciais dos espaços</p></div><button class="text-button" data-goto="saloes">Ver detalhes →</button></div>
             <div class="hall-cards" id="dashboardHalls"></div>
           </article>
         </section>
@@ -183,7 +194,7 @@
         <section class="page-section" id="page-clientes">
           <div class="page-heading"><div><p class="eyebrow">CADASTROS</p><h1>Clientes</h1><p class="muted">Formatação automática de nome e validação de celular e CPF.</p></div><button class="primary-button" id="newClientButton">＋ Novo cliente</button></div>
           <article class="panel">
-            <div class="table-toolbar"><div><h2>Clientes cadastrados</h2><p>Base de contratantes do EmojiFestas</p></div><input class="search-input" id="clientSearch" placeholder="⌕  Buscar cliente ou CPF..."></div>
+            <div class="table-toolbar"><div><h2>Clientes cadastrados</h2><p>Base de contratantes do Emoji Festas</p></div><input class="search-input" id="clientSearch" placeholder="⌕  Buscar cliente ou CPF..."></div>
             <div class="table-wrap"><table><thead><tr><th>CLIENTE</th><th>CELULAR</th><th>CPF</th><th>ID</th></tr></thead><tbody id="clientsTable"></tbody></table></div>
           </article>
         </section>
@@ -202,9 +213,9 @@
         <section class="page-section" id="page-pagamentos">
           <div class="page-heading"><div><p class="eyebrow">FINANCEIRO</p><h1>Pagamentos</h1><p class="muted">Controle de sinais, parcelas e quitação das festas.</p></div><button class="primary-button" id="newPaymentButton">＋ Registrar pagamento</button></div>
           <div class="stats-grid three-stats">
-            <article class="stat-card accent-purple"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon purple">R$</span></div><strong id="payTotal">R$ 0,00</strong><small>Soma dos agendamentos</small></article>
+            <article class="stat-card accent-amber"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon amber">R$</span></div><strong id="payTotal">R$ 0,00</strong><small>Soma dos agendamentos</small></article>
             <article class="stat-card accent-green"><div class="stat-top"><span>Valor recebido</span><span class="stat-icon green">✓</span></div><strong id="payReceived">R$ 0,00</strong><small>Pagamentos lançados</small></article>
-            <article class="stat-card accent-orange"><div class="stat-top"><span>Valor pendente</span><span class="stat-icon orange">◷</span></div><strong id="payPending">R$ 0,00</strong><small>Saldo a receber</small></article>
+            <article class="stat-card accent-yellow"><div class="stat-top"><span>Valor pendente</span><span class="stat-icon yellow">◷</span></div><strong id="payPending">R$ 0,00</strong><small>Saldo a receber</small></article>
           </div>
           <article class="panel">
             <div class="table-toolbar"><div><h2>Resumo financeiro por festa</h2><p>Acompanhe quanto já foi pago e o saldo restante</p></div></div>
@@ -216,12 +227,12 @@
         <section class="page-section" id="page-relatorios">
           <div class="page-heading"><div><p class="eyebrow">ANÁLISE</p><h1>Relatórios</h1><p class="muted">Ocupação por espaço e indicadores gerais do sistema.</p></div></div>
           <div class="stats-grid">
-            <article class="stat-card"><div class="stat-top"><span>Total de festas</span><span class="stat-icon purple">📅</span></div><strong id="reportBookings">—</strong></article>
-            <article class="stat-card"><div class="stat-top"><span>Total de clientes</span><span class="stat-icon blue">👥</span></div><strong id="reportClients">—</strong></article>
-            <article class="stat-card"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon orange">R$</span></div><strong id="reportRevenue">—</strong></article>
-            <article class="stat-card"><div class="stat-top"><span>Serviços extras</span><span class="stat-icon green">✨</span></div><strong id="reportExtras">—</strong></article>
+            <article class="stat-card accent-yellow"><div class="stat-top"><span>Total de festas</span><span class="stat-icon yellow">▣</span></div><strong id="reportBookings">—</strong></article>
+            <article class="stat-card accent-ink"><div class="stat-top"><span>Total de clientes</span><span class="stat-icon ink-badge">♙</span></div><strong id="reportClients">—</strong></article>
+            <article class="stat-card accent-amber"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon amber">R$</span></div><strong id="reportRevenue">—</strong></article>
+            <article class="stat-card accent-green"><div class="stat-top"><span>Serviços extras</span><span class="stat-icon green">✦</span></div><strong id="reportExtras">—</strong></article>
           </div>
-          <article class="panel"><div class="panel-heading"><div><h2>Festas por espaço</h2><p>Comparativo de agendamentos entre Espaço 1, Espaço 2 e Espaço 3</p></div></div><div id="reportHallRows" class="report-rows"></div></article>
+          <article class="panel"><div class="panel-heading"><div><h2>Festas por espaço</h2><p>Comparativo de agendamentos entre os espaços cadastrados</p></div></div><div id="reportHallRows" class="report-rows"></div></article>
         </section>
       </section>
     </main>
@@ -229,7 +240,7 @@
 
   <div class="modal-backdrop" id="modalBackdrop">
     <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal-heading"><div><p class="eyebrow">EMOJIFESTAS</p><h2 id="modalTitle">Novo cadastro</h2></div><button class="close-modal" id="closeModal" aria-label="Fechar">×</button></div>
+      <div class="modal-heading"><div><p class="eyebrow">EMOJI FESTAS</p><h2 id="modalTitle">Novo cadastro</h2></div><button class="close-modal" id="closeModal" aria-label="Fechar">×</button></div>
       <div id="modalBody"></div>
     </section>
   </div>
