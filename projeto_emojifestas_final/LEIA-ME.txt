@@ -1,0 +1,31 @@
+=====================================================
+EMOJIFESTAS - SISTEMA DE GESTÃO DE EVENTOS (POO)
+=====================================================
+
+ESTRUTURA DE PASTAS:
+- app/
+    config.py     -> Configurações e caminho do banco SQLite
+    main.py       -> Execução via Terminal (CLI)
+    web_app.py    -> Servidor Web Flask conectado ao mesmo Banco POO
+- models/
+    entidades.py  -> Classes POO (Funcionario, Salao, Combo, Extra, Cliente, Festa, Pagamento, CalendarioSalao)
+- database/
+    banco.py      -> Persistência SQLite, anti-duplicação e regras de negócio
+- ui/
+    menu.py       -> Interface de terminal + validadores (nome, celular, CPF, data, hora)
+- web/
+    templates/index.html -> Interface Web completa (Login + Painel + Calendário por Espaço)
+    static/style.css     -> Identidade visual EmojiFestas
+    static/script.js     -> Integração com a API Flask
+
+COMO RODAR NO TERMINAL (SEM PRECISAR DE FLASK):
+  python app/main.py
+
+COMO RODAR NO NAVEGADOR (WEB + FLASK):
+  1. pip install -r requirements.txt
+  2. python app/web_app.py
+  3. Abra http://127.0.0.1:5000 no navegador
+
+USUÁRIOS DE ACESSO:
+  - Proprietária: marina / 1234
+  - Atendente:    lucas  / 1234

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b2be0">
+  <title>EmojiFestas | Gestão de Eventos e Espaços</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- TELA DE LOGIN / BOAS-VINDAS -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-hero">
+      <div class="login-brand">
+        <span class="brand-badge">🎉</span>
+        <div>
+          <strong>EmojiFestas</strong>
+          <small>SÃO LEOPOLDO • GESTÃO DE EVENTOS</small>
+        </div>
+      </div>
+      <span class="hero-pill">✨ Gestão simples. Festas inesquecíveis.</span>
+      <h1>Tudo para cada festa acontecer sem imprevistos.</h1>
+      <p>Controle integrado dos 3 espaços exclusivos do EmojiFestas, calendário anti-duplicação em tempo real, pacotes, extras e financeiro.</p>
+      <div class="hero-chips">
+        <span>🏰 3 espaços integrados</span>
+        <span>📅 Agenda sem conflitos</span>
+        <span>💳 Controle de sinal e quitação</span>
+      </div>
+      <footer class="hero-footer">Sistema desenvolvido em Python + POO + SQLite</footer>
+    </div>
+
+    <div class="login-box-wrap">
+      <form class="login-card" id="loginForm">
+        <p class="eyebrow">BEM-VINDO(A) DE VOLTA</p>
+        <h2>Acesse sua conta</h2>
+        <p class="muted">Entre com suas credenciais para gerenciar os eventos.</p>
+
+        <div class="form-field">
+          <label for="loginUser">Usuário</label>
+          <input class="form-control" id="loginUser" name="usuario" placeholder="Ex.: marina ou lucas" required autocomplete="username">
+        </div>
+        <div class="form-field">
+          <label for="loginPass">Senha</label>
+          <input class="form-control" id="loginPass" name="senha" type="password" placeholder="••••" required autocomplete="current-password">
+        </div>
+
+        <button class="primary-button full-btn" type="submit">Entrar no painel</button>
+
+        <div class="quick-demo-login">
+          <span>Acesso rápido para demonstração:</span>
+          <div class="demo-btns">
+            <button type="button" class="chip-btn" data-user="marina" data-pass="1234">👑 Marina (Proprietária)</button>
+            <button type="button" class="chip-btn" data-user="lucas" data-pass="1234">🎧 Lucas (Atendente)</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PAINEL PRINCIPAL -->
+  <div class="app-shell hidden" id="appShell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard">
+        <span class="brand-mark">🎉</span>
+        <span><strong>EmojiFestas</strong><small>GESTÃO DE EVENTOS</small></span>
+      </a>
+
+      <div class="nav-caption">MENU PRINCIPAL</div>
+      <nav class="nav-menu">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">📊</span>Dashboard</button>
+        <button class="nav-link" data-page="agendamentos"><span class="nav-icon">📅</span>Agendamentos</button>
+        <button class="nav-link" data-page="calendario"><span class="nav-icon">🗓️</span>Calendário por Espaço</button>
+        <button class="nav-link" data-page="clientes"><span class="nav-icon">👥</span>Clientes</button>
+        <button class="nav-link" data-page="saloes"><span class="nav-icon">🏰</span>Espaços e Combos</button>
+        <button class="nav-link" data-page="pagamentos"><span class="nav-icon">💰</span>Pagamentos</button>
+        <button class="nav-link" data-page="relatorios"><span class="nav-icon">📈</span>Relatórios</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="profile-mini">
+          <div class="avatar" id="userAvatar">MR</div>
+          <div>
+            <strong id="userName">Marina Reis</strong>
+            <small id="userRole">Proprietária</small>
+          </div>
+        </div>
+        <button class="logout-btn" id="logoutButton">Sair da conta</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
+        <div class="breadcrumb"><span>EmojiFestas</span><b>/</b><strong id="breadcrumbCurrent">Dashboard</strong></div>
+        <div class="top-actions">
+          <span class="system-status"><i></i> SQLite conectado</span>
+          <button class="icon-button" id="refreshButton" title="Atualizar dados">↻</button>
+          <button class="primary-button" id="quickNewBooking">＋ Novo agendamento</button>
+        </div>
+      </header>
+
+      <section class="page-content">
+        <!-- DASHBOARD -->
+        <section class="page-section active" id="page-dashboard">
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow">VISÃO GERAL</p>
+              <h1>Olá, <span id="welcomeName">Marina</span>! 🎉</h1>
+              <p class="muted">Acompanhe a agenda dos 3 espaços e o financeiro em um só lugar.</p>
+            </div>
+            <div class="date-chip" id="todayLabel"></div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card accent-purple"><div class="stat-top"><span>Festas agendadas</span><span class="stat-icon purple">📅</span></div><strong id="statBookings">—</strong><small>Eventos confirmados</small></article>
+            <article class="stat-card accent-blue"><div class="stat-top"><span>Clientes cadastrados</span><span class="stat-icon blue">👥</span></div><strong id="statClients">—</strong><small>Base ativa de contratantes</small></article>
+            <article class="stat-card accent-orange"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon orange">R$</span></div><strong id="statRevenue">—</strong><small>Total em eventos</small></article>
+            <article class="stat-card accent-green"><div class="stat-top"><span>Recebido até agora</span><span class="stat-icon green">✓</span></div><strong id="statReceived">—</strong><small>Sinais e parcelas pagas</small></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel agenda-panel">
+              <div class="panel-heading"><div><h2>Próximos eventos</h2><p>Agenda ordenada por data e horário</p></div><button class="text-button" data-goto="agendamentos">Ver todos →</button></div>
+              <div id="dashboardAgenda" class="agenda-list"><div class="empty-state">Carregando agenda...</div></div>
+            </article>
+            <article class="panel calendar-panel">
+              <div class="panel-heading"><div><h2>Calendário Geral</h2><p id="calendarMonth"></p></div><div class="calendar-arrows"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div></div>
+              <div class="calendar-weekdays"><span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span></div>
+              <div class="calendar-days" id="calendarDays"></div>
+              <div class="calendar-legend"><span><i></i> Hoje</span><span><i></i> Com evento</span></div>
+            </article>
+          </div>
+
+          <article class="panel hall-overview">
+            <div class="panel-heading"><div><h2>Nossos 3 Espaços Exclusivos</h2><p>Estrutura, capacidade e diferenciais do EmojiFestas</p></div><button class="text-button" data-goto="saloes">Ver detalhes →</button></div>
+            <div class="hall-cards" id="dashboardHalls"></div>
+          </article>
+        </section>
+
+        <!-- AGENDAMENTOS -->
+        <section class="page-section" id="page-agendamentos">
+          <div class="page-heading"><div><p class="eyebrow">EVENTOS</p><h1>Agendamentos</h1><p class="muted">Bloqueio automático de conflitos de data e horário por espaço.</p></div><button class="primary-button" id="newBookingButton">＋ Novo agendamento</button></div>
+          <article class="panel">
+            <div class="table-toolbar"><div><h2>Festas agendadas</h2><p>Duração padrão de 4h + horas extras contratadas</p></div><input class="search-input" id="bookingSearch" placeholder="⌕  Buscar cliente ou espaço..."></div>
+            <div class="table-wrap"><table><thead><tr><th>EVENTO</th><th>CLIENTE</th><th>ESPAÇO</th><th>DATA E HORÁRIO</th><th>VALOR</th><th>PAGAMENTO</th><th>AÇÕES</th></tr></thead><tbody id="bookingsTable"></tbody></table></div>
+          </article>
+        </section>
+
+        <!-- CALENDÁRIO POR ESPAÇO -->
+        <section class="page-section" id="page-calendario">
+          <div class="page-heading">
+            <div><p class="eyebrow">DISPONIBILIDADE</p><h1>Calendário por Espaço</h1><p class="muted">Selecione o espaço e o mês para visualizar dias livres e ocupados.</p></div>
+            <div class="calendar-filter-bar">
+              <select class="form-control" id="calSpaceSelect"></select>
+              <select class="form-control" id="calMonthSelect">
+                <option value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option>
+                <option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option>
+                <option value="7">Julho</option><option value="8">Agosto</option><option value="9">Setembro</option>
+                <option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+              </select>
+              <input class="form-control year-input" type="number" id="calYearInput" min="2024" max="2035">
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel">
+              <div class="panel-heading"><div><h2 id="spaceCalTitle">Calendário do Espaço</h2><p id="spaceCalSubtitle">Dias marcados em destaque possuem reserva</p></div></div>
+              <div class="calendar-weekdays big-cal"><span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span></div>
+              <div class="calendar-days big-cal" id="spaceCalendarDays"></div>
+              <div class="calendar-legend"><span><i></i> Dia livre</span><span><i></i> Dia com festa agendada</span></div>
+            </article>
+            <article class="panel">
+              <div class="panel-heading"><div><h2>Reservas do Mês</h2><p>Horários bloqueados neste espaço</p></div></div>
+              <div id="spaceReservationsList" class="agenda-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- CLIENTES -->
+        <section class="page-section" id="page-clientes">
+          <div class="page-heading"><div><p class="eyebrow">CADASTROS</p><h1>Clientes</h1><p class="muted">Formatação automática de nome e validação de celular e CPF.</p></div><button class="primary-button" id="newClientButton">＋ Novo cliente</button></div>
+          <article class="panel">
+            <div class="table-toolbar"><div><h2>Clientes cadastrados</h2><p>Base de contratantes do EmojiFestas</p></div><input class="search-input" id="clientSearch" placeholder="⌕  Buscar cliente ou CPF..."></div>
+            <div class="table-wrap"><table><thead><tr><th>CLIENTE</th><th>CELULAR</th><th>CPF</th><th>ID</th></tr></thead><tbody id="clientsTable"></tbody></table></div>
+          </article>
+        </section>
+
+        <!-- ESPAÇOS E COMBOS -->
+        <section class="page-section" id="page-saloes">
+          <div class="page-heading"><div><p class="eyebrow">ESTRUTURA</p><h1>Espaços e Combos</h1><p class="muted">Conheça os 3 espaços oficiais, pacotes e serviços adicionais.</p></div><button class="primary-button" id="newHallButton">＋ Novo espaço</button></div>
+          <div class="hall-cards hall-cards-page" id="hallsGrid"></div>
+          <div class="two-column">
+            <article class="panel"><div class="panel-heading"><div><h2>Combos disponíveis</h2><p>Pacotes base de decoração e buffet</p></div></div><div id="combosList" class="catalog-list"></div></article>
+            <article class="panel"><div class="panel-heading"><div><h2>Serviços adicionais</h2><p>Extras opcionais para personalizar o evento</p></div></div><div id="extrasList" class="catalog-list"></div></article>
+          </div>
+        </section>
+
+        <!-- PAGAMENTOS -->
+        <section class="page-section" id="page-pagamentos">
+          <div class="page-heading"><div><p class="eyebrow">FINANCEIRO</p><h1>Pagamentos</h1><p class="muted">Controle de sinais, parcelas e quitação das festas.</p></div><button class="primary-button" id="newPaymentButton">＋ Registrar pagamento</button></div>
+          <div class="stats-grid three-stats">
+            <article class="stat-card accent-purple"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon purple">R$</span></div><strong id="payTotal">R$ 0,00</strong><small>Soma dos agendamentos</small></article>
+            <article class="stat-card accent-green"><div class="stat-top"><span>Valor recebido</span><span class="stat-icon green">✓</span></div><strong id="payReceived">R$ 0,00</strong><small>Pagamentos lançados</small></article>
+            <article class="stat-card accent-orange"><div class="stat-top"><span>Valor pendente</span><span class="stat-icon orange">◷</span></div><strong id="payPending">R$ 0,00</strong><small>Saldo a receber</small></article>
+          </div>
+          <article class="panel">
+            <div class="table-toolbar"><div><h2>Resumo financeiro por festa</h2><p>Acompanhe quanto já foi pago e o saldo restante</p></div></div>
+            <div class="table-wrap"><table><thead><tr><th>CLIENTE</th><th>EVENTO / ESPAÇO</th><th>TOTAL</th><th>PAGO</th><th>RESTANTE</th><th>STATUS</th></tr></thead><tbody id="paymentsTable"></tbody></table></div>
+          </article>
+        </section>
+
+        <!-- RELATÓRIOS -->
+        <section class="page-section" id="page-relatorios">
+          <div class="page-heading"><div><p class="eyebrow">ANÁLISE</p><h1>Relatórios</h1><p class="muted">Ocupação por espaço e indicadores gerais do sistema.</p></div></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>Total de festas</span><span class="stat-icon purple">📅</span></div><strong id="reportBookings">—</strong></article>
+            <article class="stat-card"><div class="stat-top"><span>Total de clientes</span><span class="stat-icon blue">👥</span></div><strong id="reportClients">—</strong></article>
+            <article class="stat-card"><div class="stat-top"><span>Valor contratado</span><span class="stat-icon orange">R$</span></div><strong id="reportRevenue">—</strong></article>
+            <article class="stat-card"><div class="stat-top"><span>Serviços extras</span><span class="stat-icon green">✨</span></div><strong id="reportExtras">—</strong></article>
+          </div>
+          <article class="panel"><div class="panel-heading"><div><h2>Festas por espaço</h2><p>Comparativo de agendamentos entre Espaço 1, Espaço 2 e Espaço 3</p></div></div><div id="reportHallRows" class="report-rows"></div></article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><p class="eyebrow">EMOJIFESTAS</p><h2 id="modalTitle">Novo cadastro</h2></div><button class="close-modal" id="closeModal" aria-label="Fechar">×</button></div>
+      <div id="modalBody"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
