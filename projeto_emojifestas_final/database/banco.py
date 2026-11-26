@@ -11,7 +11,6 @@ from models.entidades import (
     Salao,
 )
 
-
 class Banco:
     def __init__(self, db_path=None):
         caminho = db_path or DB_FILE

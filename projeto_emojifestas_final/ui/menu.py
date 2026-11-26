@@ -5,7 +5,6 @@ from models.entidades import CalendarioSalao, Funcionario
 
 PREPOSICOES_NOME = {"da", "das", "de", "do", "dos", "e"}
 
-
 def formatar_nome_pessoa(nome: str) -> str:
     partes = [p for p in re.sub(r"\s+", " ", nome.strip()).split(" ") if p]
     resultado = []
@@ -17,7 +16,6 @@ def formatar_nome_pessoa(nome: str) -> str:
             resultado.append("-".join(sub.capitalize() for sub in minuscula.split("-")))
     return " ".join(resultado)
 
-
 def validar_e_formatar_nome(nome: str) -> tuple[bool, str]:
     limpo = re.sub(r"\s+", " ", nome.strip())
     if len(limpo) < 2:
@@ -25,7 +23,6 @@ def validar_e_formatar_nome(nome: str) -> tuple[bool, str]:
     if not re.fullmatch(r"[A-Za-zÀ-ÖØ-öø-ÿ\s\-']+", limpo):
         return False, "O nome deve conter apenas letras (sem números ou símbolos)."
     return True, formatar_nome_pessoa(limpo)
-
 
 def validar_e_formatar_celular(celular: str) -> tuple[bool, str]:
     digitos = re.sub(r"\D", "", celular)
@@ -40,7 +37,6 @@ def validar_e_formatar_celular(celular: str) -> tuple[bool, str]:
     else:
         formatado = f"({digitos[:2]}) {digitos[2:6]}-{digitos[6:]}"
     return True, formatado
-
 
 def validar_e_formatar_cpf(cpf: str) -> tuple[bool, str]:
     digitos = re.sub(r"\D", "", cpf)
@@ -61,7 +57,6 @@ def validar_e_formatar_cpf(cpf: str) -> tuple[bool, str]:
     formatado = f"{digitos[:3]}.{digitos[3:6]}.{digitos[6:9]}-{digitos[9:]}"
     return True, formatado
 
-
 def validar_data_festa(data_str: str) -> tuple[bool, str]:
     limpa = data_str.strip()
     try:
@@ -71,7 +66,6 @@ def validar_data_festa(data_str: str) -> tuple[bool, str]:
     if dt < date.today():
         return False, "A data da festa não pode ser no passado."
     return True, dt.isoformat()
-
 
 def validar_hora_festa(hora_str: str) -> tuple[bool, str]:
     limpa = hora_str.strip()
@@ -83,7 +77,6 @@ def validar_hora_festa(hora_str: str) -> tuple[bool, str]:
         return False, "Horário inválido! Informe horas entre 00:00 e 23:59."
     return True, hr.strftime("%H:%M")
 
-
 def _perguntar_tentar_novamente(mensagem_erro: str) -> bool:
     print(f"Erro: {mensagem_erro}")
     while True:
@@ -93,7 +86,6 @@ def _perguntar_tentar_novamente(mensagem_erro: str) -> bool:
         if resp in ("n", "nao", "não"):
             return False
         print("Digite 's' para sim ou 'n' para não.")
-
 
 def _ler_int(
     mensagem: str,
@@ -118,7 +110,6 @@ def _ler_int(
         except ValueError:
             print("Entrada inválida! Digite um número inteiro.")
 
-
 def _ler_float(mensagem: str, minimo: float | None = None) -> float:
     while True:
         entrada = input(mensagem).strip().replace(",", ".")
@@ -131,7 +122,6 @@ def _ler_float(mensagem: str, minimo: float | None = None) -> float:
         except ValueError:
             print("Entrada inválida! Digite um valor numérico (ex: 250.00).")
 
-
 class SistemaCLI:
     def __init__(self, db: Banco):
         self.db = db
@@ -141,7 +131,7 @@ class SistemaCLI:
         print("=" * 44)
         print("      EMOJIFESTAS - LOGIN DO SISTEMA      ")
         print("=" * 44)
-        print("(Dica: marina / 1234 [Proprietária] ou lucas / 1234 [Atendente])")
+        print("(Login para teste: marina / 1234 [Proprietária] ou lucas / 1234 [Atendente])")
         for tentativa in range(3):
             usuario = input("Usuário: ")
             senha = input("Senha: ")
@@ -165,7 +155,7 @@ class SistemaCLI:
             print("1. Listar Espaços (Salões), Combos e Extras")
             print("2. Listar Clientes")
             print("3. Cadastrar Novo Cliente")
-            print("4. Agendar Festa (com verificação de agenda)")
+            print("4. Agendar Festa")
             print("5. Listar Agendamentos (Festas)")
             print("6. Ver Calendário Mensal por Espaço")
             print("7. Registrar / Consultar Pagamentos")

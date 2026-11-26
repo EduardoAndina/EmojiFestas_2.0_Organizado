@@ -8,7 +8,6 @@ if str(ROOT_DIR) not in sys.path:
 from database.banco import Banco
 from ui.menu import SistemaCLI
 
-
 def main():
     db = Banco()
     try:
@@ -16,7 +15,6 @@ def main():
         app.executar()
     finally:
         db.fechar()
-
 
 if __name__ == "__main__":
     main()

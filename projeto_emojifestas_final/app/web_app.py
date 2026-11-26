@@ -28,7 +28,6 @@ app = Flask(
 app.secret_key = os.environ.get("SECRET_KEY", "emojifestas-poo-2026-secret")
 db = Banco()
 
-
 def listar_festas_detalhadas():
     resultado = []
     for festa in db.listar_festas():
@@ -59,17 +58,14 @@ def listar_festas_detalhadas():
         })
     return resultado
 
-
 @app.get("/")
 def index():
     return render_template("index.html")
-
 
 @app.get("/api/sessao")
 def sessao_atual():
     user = session.get("usuario")
     return jsonify({"logado": bool(user), "usuario": user})
-
 
 @app.post("/api/login")
 def api_login():
@@ -89,12 +85,10 @@ def api_login():
     session["usuario"] = user_data
     return jsonify(message=f"Bem-vindo(a), {func.nome}!", usuario=user_data)
 
-
 @app.post("/api/logout")
 def api_logout():
     session.pop("usuario", None)
     return jsonify(message="Sessão encerrada.")
-
 
 @app.get("/api/dashboard")
 def dashboard():
@@ -109,7 +103,6 @@ def dashboard():
         "valor_recebido": recebido,
         "valor_pendente": max(0.0, round(contratado - recebido, 2)),
     })
-
 
 @app.get("/api/saloes")
 def saloes():
@@ -126,7 +119,6 @@ def saloes():
         for s in db.listar_saloes()
     ])
 
-
 @app.post("/api/saloes")
 def criar_salao():
     dados = request.get_json(silent=True) or {}
@@ -141,7 +133,6 @@ def criar_salao():
         return jsonify(message="Espaço cadastrado com sucesso!", id=sid), 201
     except (TypeError, ValueError) as err:
         return jsonify(error=str(err) or "Verifique os dados do espaço."), 400
-
 
 @app.get("/api/calendario")
 def calendario_salao():
@@ -181,7 +172,6 @@ def calendario_salao():
     except ValueError as err:
         return jsonify(error=str(err)), 400
 
-
 @app.get("/api/combos")
 def combos():
     return jsonify([
@@ -189,11 +179,9 @@ def combos():
         for c in db.listar_combos()
     ])
 
-
 @app.get("/api/extras")
 def extras():
     return jsonify([{"id": e.id, "nome": e.nome, "preco": e.preco} for e in db.listar_extras()])
-
 
 @app.get("/api/clientes")
 def clientes():
@@ -201,7 +189,6 @@ def clientes():
         {"id": c.id, "nome": c.nome, "contato": c.contato, "documento": c.documento}
         for c in db.listar_clientes()
     ])
-
 
 @app.post("/api/clientes")
 def criar_cliente():
@@ -219,11 +206,9 @@ def criar_cliente():
     cid = db.cadastrar_cliente(nome_fmt, cel_fmt, cpf_fmt)
     return jsonify(message=f"Cliente '{nome_fmt}' cadastrado com sucesso!", id=cid), 201
 
-
 @app.get("/api/festas")
 def festas():
     return jsonify(listar_festas_detalhadas())
-
 
 @app.post("/api/festas")
 def criar_festa():
@@ -251,14 +236,12 @@ def criar_festa():
         return jsonify(error=mensagem), 409
     return jsonify(message=mensagem), 201
 
-
 @app.delete("/api/festas/<int:festa_id>")
 def deletar_festa(festa_id: int):
     sucesso, mensagem = db.cancelar_festa(festa_id)
     if not sucesso:
         return jsonify(error=mensagem), 404
     return jsonify(message=mensagem)
-
 
 @app.get("/api/pagamentos")
 def pagamentos():
@@ -272,7 +255,6 @@ def pagamentos():
         ORDER BY p.data DESC, p.id DESC
     """).fetchall()
     return jsonify([dict(r) for r in rows])
-
 
 @app.post("/api/pagamentos")
 def criar_pagamento():
@@ -300,7 +282,6 @@ def criar_pagamento():
     if not sucesso:
         return jsonify(error=mensagem), 400
     return jsonify(message=mensagem), 201
-
 
 if __name__ == "__main__":
     app.run(

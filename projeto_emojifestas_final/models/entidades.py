@@ -3,18 +3,16 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from app.config import DURACAO_BASE, VALOR_HORA_EXTRA
 
-
 @dataclass
 class Funcionario:
     id: int
     nome: str
     usuario: str
-    perfil: str  # "proprietaria" ou "atendente"
+    perfil: str  
     ativo: bool = True
 
     def eh_proprietaria(self) -> bool:
         return self.perfil.strip().lower() == "proprietaria"
-
 
 @dataclass
 class Salao:
@@ -26,7 +24,6 @@ class Salao:
     diferencial: str = ""
     estrutura: str = ""
 
-
 @dataclass
 class Combo:
     id: int
@@ -34,13 +31,11 @@ class Combo:
     preco: float
     descricao: str = ""
 
-
 @dataclass
 class Extra:
     id: int
     nome: str
     preco: float
-
 
 @dataclass
 class Cliente:
@@ -49,15 +44,13 @@ class Cliente:
     contato: str
     documento: str
 
-
 @dataclass
 class Pagamento:
     id: int
     festa_id: int
     valor: float
     data: str
-    tipo: str  # "Sinal", "Parcela", "Quitação"
-
+    tipo: str  
 
 @dataclass
 class Festa:
@@ -105,10 +98,6 @@ class Festa:
 
 
 class CalendarioSalao:
-    """
-    Representa o calendário mensal de um Espaço específico,
-    destacando os dias que já possuem festas agendadas (POO).
-    """
 
     NOMES_MESES = [
         "", "JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO",

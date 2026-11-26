@@ -42,7 +42,6 @@ async function api(path, options = {}) {
   return data;
 }
 
-// LOGIN / SESSÃO
 document.querySelectorAll(".chip-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     $("loginUser").value = btn.dataset.user;
@@ -85,7 +84,6 @@ function aplicarUsuario(user) {
   $("newHallButton").classList.toggle("hidden", !user.eh_proprietaria);
 }
 
-// NAVEGAÇÃO
 function goTo(page) {
   document.querySelectorAll(".page-section").forEach((el) => el.classList.toggle("active", el.id === `page-${page}`));
   document.querySelectorAll(".nav-link").forEach((el) => el.classList.toggle("active", el.dataset.page === page));
@@ -276,7 +274,6 @@ function renderReports() {
   `).join("");
 }
 
-// CALENDÁRIO GERAL (DASHBOARD)
 function renderCalendar() {
   const d = state.calendarDate;
   const year = d.getFullYear();
@@ -302,7 +299,6 @@ function renderCalendar() {
 $("prevMonth").addEventListener("click", () => { state.calendarDate.setMonth(state.calendarDate.getMonth() - 1); renderCalendar(); });
 $("nextMonth").addEventListener("click", () => { state.calendarDate.setMonth(state.calendarDate.getMonth() + 1); renderCalendar(); });
 
-// CALENDÁRIO DEDICADO POR ESPAÇO (USA CalendarioSalao DO BACKEND)
 function populateSpaceFilter() {
   const select = $("calSpaceSelect");
   const current = select.value;
@@ -357,7 +353,6 @@ $("calYearInput").addEventListener("change", loadSpaceCalendar);
 $("bookingSearch").addEventListener("input", (e) => renderBookings(e.target.value));
 $("clientSearch").addEventListener("input", (e) => renderClients(e.target.value));
 
-// MODAIS
 function openModal(title, html, onSubmit) {
   $("modalTitle").textContent = title;
   $("modalBody").innerHTML = html;
